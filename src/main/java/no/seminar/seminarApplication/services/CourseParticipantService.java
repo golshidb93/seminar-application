@@ -4,7 +4,6 @@ import no.seminar.seminarApplication.entities.CourseParticipant;
 import no.seminar.seminarApplication.repositories.CourseParticipantRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -16,13 +15,13 @@ public class CourseParticipantService {
         this.courseParticipantRepository = courseParticipantRepository;
     }
 
-    public void addCourseParticipant(CourseParticipant courseParticipant){
-        courseParticipantRepository.save(courseParticipant);
+    public CourseParticipant addCourseParticipant(CourseParticipant courseParticipant) {
+        return courseParticipantRepository.save(courseParticipant);
     }
 
-    public List<CourseParticipant> listAllCourseParticipants(){
-        List<CourseParticipant> courseParticipants = new ArrayList<>();
-        courseParticipantRepository.findAll().forEach(courseParticipants::add);
-        return courseParticipants;
+    public List<CourseParticipant> listAllCourseParticipants(String name) {
+        return courseParticipantRepository.findByCoursesName(name);
     }
+
 }
+

@@ -14,6 +14,9 @@ public class RoomService {
             new Room("R165")
     ));
 
+    public RoomService() {
+    }
+
     public void addRoom(Room room){
         rooms.add(room);
     }

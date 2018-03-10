@@ -14,6 +14,9 @@ public class CourseInstructorService {
             new CourseInstructor("Vegard Lima")
     ));
 
+    public CourseInstructorService() {
+    }
+
     public void addCourseInstructor(CourseInstructor courseInstructor){
         courseInstructors.add(courseInstructor);
     }
