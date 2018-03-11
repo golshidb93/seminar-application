@@ -30,10 +30,10 @@ public class CourseService {
     }
 
 
-    public void addCourse(Course course) {
+    public Course addCourse(Course course) {
         roomRepository.save(course.getRoom());
         courseInstructorRepository.save(course.getCourseInstructor());
-        courseRepository.save(course);
+        return courseRepository.save(course);
     }
 
 
