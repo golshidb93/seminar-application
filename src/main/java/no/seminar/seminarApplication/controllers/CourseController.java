@@ -22,13 +22,13 @@ public class CourseController {
 
 
     @RequestMapping(method = RequestMethod.POST, value = "/course/{name}/participant")
-    public void addCourseParticipant(@RequestBody CourseParticipant courseParticipant, @PathVariable String name) {
+    public Course addCourseParticipant(@RequestBody CourseParticipant courseParticipant, @PathVariable String name) {
         CourseParticipant savedCourseParticipant = courseParticipantService.addCourseParticipant(courseParticipant);//if it exists;
 
         Course courseByName = courseService.getCourseByName(name);
 
         courseByName.addCourseParticipant(savedCourseParticipant);
-        courseService.addCourse(courseByName);
+        return courseService.addCourse(courseByName);
     }
 
 
@@ -37,9 +37,10 @@ public class CourseController {
         return courseParticipantService.listAllCourseParticipants(name);
     }
 
+    // Return a Course object because in the frontend it will be more convinient.
     @RequestMapping (method = RequestMethod.POST,value="/courses")
-    public void addCourse(@RequestBody Course course){
-        courseService.addCourse(course);
+    public Course addCourse(@RequestBody Course course) {
+        return courseService.addCourse(course);
     }
 
     @RequestMapping("/course/{name}")
